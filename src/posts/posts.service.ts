@@ -9,11 +9,11 @@ export class PostsService {
   constructor(@InjectRepository(Post) private postsRepository: Repository<Post>) { }
 
   findAll(): Promise<Post[]> {
-    return this.postsRepository.find()
+    return this.postsRepository.find({relations: ['author']})
   }
 
   findOnePost(id: number): Promise<Post> {
-    return this.postsRepository.findOne({where: {id}})
+    return this.postsRepository.findOne({where: {id}, relations: ['author']}, )
   }
 
   async createPost(post: createPostInput): Promise<Post> {

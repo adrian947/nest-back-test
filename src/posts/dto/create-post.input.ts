@@ -10,4 +10,6 @@ export class createPostInput {
     @IsNotEmpty()
     @Field()
     content: string;
+    @Field()
+    authorId: number;
 }
